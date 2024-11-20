@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css'; // Import the CSS file
+import "./App.css"; // Import the CSS file
 
 const EmotionPredictor = () => {
   const [comment, setComment] = useState("");
@@ -12,7 +12,7 @@ const EmotionPredictor = () => {
     "Mental health is just as important as physical health.",
     "Taking breaks can improve productivity and well-being.",
     "Exercise can significantly reduce symptoms of depression and anxiety.",
-    "There is no shame in seeking professional help for mental health."
+    "There is no shame in seeking professional help for mental health.",
   ]);
 
   // Handle comment change
@@ -71,11 +71,7 @@ const EmotionPredictor = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="submit-btn"
-            disabled={loading}
-          >
+          <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "Processing..." : "Predict Emotions"}
           </button>
         </form>
@@ -89,7 +85,9 @@ const EmotionPredictor = () => {
               {emotions.map((emotion, index) => (
                 <li key={index} className="emotion-item">
                   <span>{Object.keys(emotion)[0]}</span>
-                  <span className="emotion-score">{Object.values(emotion)[0].toFixed(2)}</span>
+                  <span className="emotion-score">
+                    {Object.values(emotion)[0].toFixed(2)}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -99,21 +97,25 @@ const EmotionPredictor = () => {
         {prediction && (
           <div className="prediction-result">
             <h3 className="output-title">Prediction Result:</h3>
-            <p className={`prediction-text ${prediction === "Unhealthy" ? "negative" : "positive"}`}>
+            <p
+              className={`prediction-text ${
+                prediction === "Unhealthy" ? "negative" : "positive"
+              }`}
+            >
               {prediction}
             </p>
           </div>
         )}
 
         {/* Display Mental Health Facts */}
-        <div className="facts-container">
-          <h3 className="facts-title">Mental Health Tips:</h3>
-          <ul className="facts-list">
-            {facts.map((fact, index) => (
-              <li key={index} className="fact-item">{fact}</li>
-            ))}
-          </ul>
-        </div>
+        {/* <div className="facts-container">
+        <h3>Mental Health Tips 💡</h3>
+        <ul className="facts-list">
+          {facts.map((fact, index) => (
+            <li key={index} className="fact-item">{fact}</li>
+          ))}
+        </ul>
+      </div> */}
       </div>
     </div>
   );
